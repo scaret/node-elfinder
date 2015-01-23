@@ -1,0 +1,29 @@
+{
+  "name": "node-elfinder",
+  "version": "0.0.1",
+  "description": "elFinder with node.js background",
+  "main": "node-elfinder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scaret/node-elfinder"
+  },
+  "keywords": [
+    "elfinder",
+    "connector",
+    "nodejs"
+  ],
+  "author": "scaret",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/scaret/node-elfinder/issues"
+  },
+  "homepage": "https://github.com/scaret/node-elfinder",
+  "dependencies": {
+    "express": "^4.11.1",
+    "pkgcloud": "^1.2.0-alpha.0",
+    "socket.io": "^1.3.2"
+  }
+}
