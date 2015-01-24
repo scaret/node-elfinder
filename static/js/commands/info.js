@@ -75,7 +75,7 @@ elFinder.prototype.commands.info = function() {
 			count = [],
 			replSpinner = function(msg) { dialog.find('.'+spclass).parent().text(msg); },
 			id = fm.namespace+'-info-'+$.map(files, function(f) { return f.hash }).join('-'),
-			dialog = fm.getUI().find('#'+id), 
+			dialog = fm.getUI().find('#'+jqSelector(id)),
 			size, tmb, file, title, dcnt;
 			
 		if (!cnt) {

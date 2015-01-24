@@ -34,9 +34,9 @@ elFinder.prototype.commands.rename = function() {
 						input.remove();
 						parent.html(name);
 					} else {
-						cwd.find('#'+file.hash).find(filename).html(name);
+						cwd.find('#'+jqSelector(file.hash)).find(filename).html(name);
 						setTimeout(function() {
-							cwd.find('#'+file.hash).click();
+							cwd.find('#'+jqSelector(file.hash)).click();
 						}, 50);
 					}
 					
@@ -102,7 +102,7 @@ elFinder.prototype.commands.rename = function() {
 						
 					}
 				}),
-			node = cwd.find('#'+file.hash).find(filename).empty().append(input.val(file.name)),
+			node = cwd.find('#'+jqSelector(file.hash)).find(filename).empty().append(input.val(file.name)),
 			name = input.val().replace(/\.((tar\.(gz|bz|bz2|z|lzo))|cpio\.gz|ps\.gz|xcf\.(gz|bz2)|[a-z0-9]{1,4})$/ig, '')
 			;
 		

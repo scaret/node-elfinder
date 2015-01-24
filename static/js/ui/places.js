@@ -119,7 +119,7 @@ $.fn.elfinderplaces = function(fm, opts) {
 
 				if (ndx !== -1) {
 					dirs.splice(ndx, 1);
-					subtree.find('#'+hash2id(hash)).parent().remove();
+					subtree.find('#'+jqSelector(hash2id(hash))).parent().remove();
 					!subtree.children().length && root.removeClass(collapsed+' '+expanded);
 				}
 			},

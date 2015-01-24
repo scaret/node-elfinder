@@ -265,7 +265,7 @@ elFinder.prototype.commands.quicklook = function() {
 				file = self.value,
 				node;
 
-			if (self.closed() && file && (node = cwd.find('#'+file.hash)).length) {
+			if (self.closed() && file && (node = cwd.find('#'+jqSelector(file.hash))).length) {
 				navbar.attr('style', '');
 				state = animated;
 				node.trigger('scrolltoview');
@@ -281,7 +281,7 @@ elFinder.prototype.commands.quicklook = function() {
 			var win     = self.window,
 				preview = self.preview.trigger('change'),
 				file    = self.value,
-				node    = cwd.find('#'+win.data('hash')),
+				node    = cwd.find('#'+jqSelector(win.data('hash'))),
 				close   = function() {
 					state = closed;
 					win.hide();

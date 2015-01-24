@@ -136,7 +136,7 @@ elFinder.prototype.commands.edit = function() {
 				data   = {cmd : 'file', target : hash},
 				url    = fm.url(hash) || fm.options.url,
 				id    = 'edit-'+fm.namespace+'-'+file.hash,
-				d = fm.getUI().find('#'+id), 
+				d = fm.getUI().find('#'+jqSelector(id)),
 				error;
 			
 			

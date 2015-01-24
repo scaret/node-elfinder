@@ -80,7 +80,7 @@ elFinder.prototype.resources = {
 					write : true,
 					date  : 'Today '+date.getHours()+':'+date.getMinutes()
 				},
-				node = cwd.trigger('create.'+fm.namespace, file).find('#'+id),
+				node = cwd.trigger('create.'+fm.namespace, file).find('#'+jqSelector(id)),
 				input = $('<input type="text"/>')
 					.keydown(function(e) {
 						e.stopImmediatePropagation();

@@ -4,6 +4,12 @@
  *
  * @author Dmitry (dio) Levashov
  **/
+
+var jqSelector = function (path)
+{
+    return path.replace(/([;&,\.\+\*\~':"\!\^#$%@\[\]\(\)=>\| \\\/])/g, '\\$1');
+};
+
 window.elFinder = function(node, opts) {
 	this.time('load');
 	

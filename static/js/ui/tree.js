@@ -209,7 +209,7 @@ $.fn.elfindertree = function(fm, opts) {
 			 * @return jQuery
 			 */
 			findSubtree = function(hash) {
-				return hash ? tree.find('#'+fm.navHash2Id(hash)).next('.'+subtree) : tree;
+				return hash ? tree.find('#'+jqSelector(fm.navHash2Id(hash))).next('.'+subtree) : tree;
 			},
 			
 			/**
@@ -252,7 +252,7 @@ $.fn.elfindertree = function(fm, opts) {
 				while (i--) {
 					dir = dirs[i];
 
-					if (tree.find('#'+fm.navHash2Id(dir.hash)).length) {
+					if (tree.find('#'+jqSelector(fm.navHash2Id(dir.hash))).length) {
 						continue;
 					}
 					
@@ -288,11 +288,11 @@ $.fn.elfindertree = function(fm, opts) {
 			 */
 			sync = function(stopRec) {
 				var cwd     = fm.cwd().hash,
-					current = tree.find('#'+fm.navHash2Id(cwd)), 
+					current = tree.find('#'+jqSelector(fm.navHash2Id(cwd))),
 					rootNode, dir;
 				
 				if (openRoot) {
-					rootNode = tree.find('#'+fm.navHash2Id(fm.root()));
+					rootNode = tree.find('#'+jqSelector(fm.navHash2Id(fm.root())));
 					rootNode.is('.'+loaded) && rootNode.addClass(expanded).next('.'+subtree).show();
 					openRoot = false;
 				}
@@ -308,7 +308,7 @@ $.fn.elfindertree = function(fm, opts) {
 					}
 					if (fm.newAPI) {
 						dir = fm.file(cwd);
-						if (dir && dir.phash && tree.find('#'+fm.navHash2Id(dir.phash)).length) {
+						if (dir && dir.phash && tree.find('#'+jqSelector(fm.navHash2Id(dir.phash))).length) {
 							updateTree([dir]);
 							return sync();
 						}
@@ -353,7 +353,7 @@ $.fn.elfindertree = function(fm, opts) {
 				//tree.find('.'+subtree+':has(*)').prev(':not(.'+collapsed+')').addClass(collapsed)
 
 				$.each(dirs, function(i, dir) {
-					tree.find('#'+fm.navHash2Id(dir.phash)+sel)
+					tree.find('#'+jqSelector(fm.navHash2Id(dir.phash)+sel))
 						.filter(function() { return $(this).next('.'+subtree).children().length > 0 })
 						.addClass(cls);
 				})
@@ -470,7 +470,7 @@ $.fn.elfindertree = function(fm, opts) {
 			
 			while (l--) {
 				dir = dirs[l];
-				if ((node = tree.find('#'+fm.navHash2Id(dir.hash))).length) {
+				if ((node = tree.find('#'+jqSelector(fm.navHash2Id(dir.hash)))).length) {
 					if (dir.phash) {
 						realParent  = node.closest('.'+subtree);
 						reqParent   = findSubtree(dir.phash);
@@ -492,7 +492,7 @@ $.fn.elfindertree = function(fm, opts) {
 					
 					if (dir.dirs 
 					&& (isExpanded || isLoaded) 
-					&& (node = tree.find('#'+fm.navHash2Id(dir.hash))) 
+					&& (node = tree.find('#'+jqSelector(fm.navHash2Id(dir.hash))))
 					&& node.next('.'+subtree).children().length) {
 						isExpanded && node.addClass(expanded);
 						isLoaded && node.addClass(loaded);
@@ -510,7 +510,7 @@ $.fn.elfindertree = function(fm, opts) {
 				node, stree;
 			
 			while (l--) {
-				if ((node = tree.find('#'+fm.navHash2Id(dirs[l]))).length) {
+				if ((node = tree.find('#'+jqSelector(fm.navHash2Id(dirs[l]))).length)) {
 					stree = node.closest('.'+subtree);
 					node.parent().detach();
 					if (!stree.children().length) {
@@ -521,7 +521,7 @@ $.fn.elfindertree = function(fm, opts) {
 		})
 		// add/remove active class for current dir
 		.bind('search searchend', function(e) {
-			tree.find('#'+fm.navHash2Id(fm.cwd().hash))[e.type == 'search' ? 'removeClass' : 'addClass'](active);
+			tree.find('#'+jqSelector(fm.navHash2Id(fm.cwd().hash)))[e.type == 'search' ? 'removeClass' : 'addClass'](active);
 		})
 		// lock/unlock dirs while moving
 		.bind('lockfiles unlockfiles', function(e) {
@@ -533,7 +533,7 @@ $.fn.elfindertree = function(fm, opts) {
 				})
 				
 			$.each(dirs, function(i, hash) {
-				var dir = tree.find('#'+fm.navHash2Id(hash));
+				var dir = tree.find('#'+jqSelector(fm.navHash2Id(hash)));
 				
 				if (dir.length) {
 					dir.is('.'+draggable) && dir.draggable(act);

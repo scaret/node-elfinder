@@ -261,7 +261,7 @@ $.fn.elfindercwd = function(fm, options) {
 				if (n && n.length && !n.is('.elfinder-cwd-parent')) {
 					if (append) {
 						// append new files to selected
-						n = s.add(s[prev ? 'prevUntil' : 'nextUntil']('#'+n.attr('id'))).add(n);
+						n = s.add(s[prev ? 'prevUntil' : 'nextUntil']('#'+jqSelector(n.attr('id')))).add(n);
 					} else {
 						// unselect selected files
 						sel.trigger(evtUnselect);
@@ -278,7 +278,7 @@ $.fn.elfindercwd = function(fm, options) {
 			selectedFiles = [],
 			
 			selectFile = function(hash) {
-				cwd.find('#'+hash).trigger(evtSelect);
+				cwd.find('#'+jqSelector(hash)).trigger(evtSelect);
 			},
 			
 			selectAll = function() {
@@ -471,7 +471,7 @@ $.fn.elfindercwd = function(fm, options) {
 					ndx;
 				
 				$.each(images, function(hash, tmb) {
-					var node = cwd.find('#'+hash);
+					var node = cwd.find('#'+jqSelector(hash));
 
 					if (node.length) {
 
@@ -566,7 +566,7 @@ $.fn.elfindercwd = function(fm, options) {
 					file = files[l];
 					hash = file.hash;
 					
-					if (cwd.find('#'+hash).length) {
+					if (cwd.find('#'+jqSelector(hash)).length) {
 						continue;
 					}
 					
@@ -578,7 +578,7 @@ $.fn.elfindercwd = function(fm, options) {
 						place.append(itemhtml(file));
 					}
 					
-					if (cwd.find('#'+hash).length) {
+					if (cwd.find('#'+jqSelector(hash)).length) {
 						if (file.mime == 'directory') {
 							dirs = true;
 						} else if (file.tmb) {
@@ -603,7 +603,7 @@ $.fn.elfindercwd = function(fm, options) {
 				
 				while (l--) {
 					hash = files[l];
-					if ((n = cwd.find('#'+hash)).length) {
+					if ((n = cwd.find('#'+jqSelector(hash))).length) {
 						try {
 							n.detach();
 						} catch(e) {
@@ -700,7 +700,7 @@ $.fn.elfindercwd = function(fm, options) {
 					e.stopImmediatePropagation();
 
 					if (e.shiftKey && (pl || nl)) {
-						sib = pl ? p.prevUntil('#'+prev.attr('id')) : p.nextUntil('#'+next.attr('id'));
+						sib = pl ? p.prevUntil('#'+jqSelector(prev.attr('id'))) : p.nextUntil('#'+jqSelector(next.attr('id')));
 						sib.add(p).trigger(evtSelect);
 					} else if (e.ctrlKey || e.metaKey) {
 						p.trigger(p.is('.'+clSelected) ? evtUnselect : evtSelect);
@@ -880,7 +880,7 @@ $.fn.elfindercwd = function(fm, options) {
 				// unselect all selected files
 				.bind('unselectall', unselectAll)
 				.bind('selectfile', function(e, id) {
-					cwd.find('#'+id).trigger(evtSelect);
+					cwd.find('#'+jqSelector(id)).trigger(evtSelect);
 					trigger();
 				}),
 			wrapper = $('<div class="elfinder-cwd-wrapper"/>')
@@ -1068,7 +1068,7 @@ $.fn.elfindercwd = function(fm, options) {
 					l     = files.length;
 				
 				while (l--) {
-					cwd.find('#'+files[l]).trigger(event);
+					cwd.find('#'+jqSelector(files[l])).trigger(event);
 				}
 				trigger();
 			})

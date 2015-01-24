@@ -649,7 +649,7 @@ elFinder.prototype.commands.resize = function() {
 		}
 		
 		id = 'resize-'+fm.namespace+'-'+files[0].hash;
-		dialog = fm.getUI().find('#'+id);
+		dialog = fm.getUI().find('#'+jqSelector(id));
 		
 		if (dialog.length) {
 			dialog.elfinderdialog('toTop');
