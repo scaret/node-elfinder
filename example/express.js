@@ -16,7 +16,7 @@ app.set('elfinder', {
 });
 
 app.use(express.static(app.get('elfinder').static)                          );
-app.use(bodyParser.urlencoded({extended: false})                            );
+app.use(bodyParser.urlencoded({extended: true})                             );
 app.use(bodyParser.json()                                                   );
 
 require("..").Connector(app);
